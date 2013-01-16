@@ -56,6 +56,13 @@ int main(int argc, const char* argv[] )
   char cmpErrFile[256] ;
   char doneFile[256]   ;
 
+  memset( childPrg  , '\0', 256 ) ;
+  memset( stdOutFile, '\0', 256 ) ;
+  memset( stdErrFile, '\0', 256 ) ;
+  memset( cmpOutFile, '\0', 256 ) ;
+  memset( cmpErrFile, '\0', 256 ) ;
+  memset( doneFile  , '\0', 256 ) ;
+
   FILE *doneFP ;
 
   int i ;
