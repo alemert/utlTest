@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <libgen.h>
+#include <strings.h>
 
 // ---------------------------------------------------------
 // own 
@@ -41,12 +42,12 @@
 
 int main(int argc, const char* argv[] )
 {
-  char *childPrg   ;
-  char *stdOutFile ;
-  char *stdErrFile ;
-  char *cmpOutFile ;
-  char *cmpErrFile ;
-  char *doneFile   ;
+  char childPrg[256]   ;
+  char stdOutFile[256] ;
+  char stdErrFile[256] ;
+  char cmpOutFile[256] ;
+  char cmpErrFile[256] ;
+  char doneFile[256]   ;
 
   FILE *doneFP ;
 
@@ -54,12 +55,12 @@ int main(int argc, const char* argv[] )
 
   int sysRc = NO_ERROR ;
 
-  sysRc = cmdLineHandler( argc, argv, &childPrg,
-                                      &stdOutFile,
-                                      &stdErrFile,
-                                      &cmpOutFile,
-                                      &cmpErrFile,
-                                      &doneFile ) ;
+  sysRc = cmdLineHandler( argc, argv, childPrg,
+                                      stdOutFile,
+                                      stdErrFile,
+                                      cmpOutFile,
+                                      cmpErrFile,
+                                      doneFile ) ;
 
   if( sysRc != NO_ERROR ) { usage(0) ; exit(1) ; }
 
@@ -152,14 +153,14 @@ void usage()
 /******************************************************************************/
 /* command line handler                                                       */
 /******************************************************************************/
-int cmdLineHandler( const int argc             ,
-                    const char** argv          ,
-                          char** pChildPrg     ,
-                          char** pStdOutFile   ,
-                          char** pStdErrFile   ,
-                          char** pCmpOutFile   ,
-                          char** pCmpErrFile   ,
-                          char** pFlagDoneFile )
+int cmdLineHandler( const int argc            ,
+                    const char** argv         ,
+                          char* pChildPrg     ,
+                          char* pStdOutFile   ,
+                          char* pStdErrFile   ,
+                          char* pCmpOutFile   ,
+                          char* pCmpErrFile   ,
+                          char* pFlagDoneFile )
 {
   int rc = 0 ;
 
@@ -183,44 +184,44 @@ int cmdLineHandler( const int argc             ,
     rc = 1     ;                    //     return error 
     goto _door ;                    //     
   }                                 //
-  *pChildPrg = (char*) argv[1] ;    // set child prg
+  strcpy( pChildPrg, argv[1] ) ;    // set child prg
                                     //
   if( argc == 2 )                   // check for 2nd cmd line attr
   {                                 //  if not exists 
     rc = 0     ;                    //    return from func 
     goto _door ;                    //    whithout an error
   }                                 //
-  *pStdOutFile = (char*) argv[2] ;  // set stdOut
+  strcpy( pStdOutFile, argv[2] ) ;  // set stdOut
                                     //
   if( argc == 3 )                   // check for 3th cmd line attr
   {                                 //  if not exists 
     rc = 0     ;                    //    return from func 
     goto _door ;                    //    whithout an error
   }                                 //
-  *pStdErrFile = (char*) argv[3] ;  //
+  strcpy( pStdErrFile, argv[3] ) ;  //
                                     //
   if( argc == 4 )                   // check for 4th cmd line attr
   {                                 //  if not exists 
     rc = 0     ;                    //    return from func 
     goto _door ;                    //    whithout an error
   }                                 //
-  *pCmpOutFile = (char*) argv[4] ;  // set stdOut
+  strcpy( pCmpOutFile, argv[4] ) ;  // set stdOut
 
-  if( argc == 5 )                   // check for 4th cmd line attr
+  if( argc == 5 )                   // check for 5th cmd line attr
   {                                 //  if not exists 
     rc = 0     ;                    //    return from func 
     goto _door ;                    //    whithout an error
   }                                 //
-  *pCmpErrFile = (char*) argv[5] ;  // set stdOut
+  strcpy( pCmpErrFile, argv[5] ) ;  // set stdOut
 
-  if( argc == 6 )                   // check for 4th cmd line attr
+  if( argc == 6 )                   // check for 6th cmd line attr
   {                                 //  if not exists 
     rc = 0     ;                    //    return from func 
     goto _door ;                    //    whithout an error
   }                                 //
-  *pFlagDoneFile = (char*) argv[6] ;//
+  strcpy( pFlagDoneFile, argv[6] ) ;//
                                     //
-  if( argc > 7 )                    // check for more then 4 arguments
+  if( argc > 7 )                    // check for more then 6 arguments
   {                                 //   return error
     rc = 1     ;                    //
     goto _door ;                    //
