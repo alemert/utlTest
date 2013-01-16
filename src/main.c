@@ -12,7 +12,14 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <libgen.h>
+
+#ifdef __sun
 #include <strings.h>
+#endif
+
+#ifdef linux
+#include <string.h>
+#endif
 
 // ---------------------------------------------------------
 // own 
@@ -188,8 +195,8 @@ int cmdLineHandler( const int argc            ,
 {
   int rc = 0 ;
 
-  *pStdOutFile = NULL ;
-  *pStdErrFile = NULL ;
+//*pStdOutFile = NULL ;
+//*pStdErrFile = NULL ;
 
   // -------------------------------------------------------
   // print out cmdline for test moudles only
