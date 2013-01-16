@@ -51,7 +51,10 @@ int main(int argc, const char* argv[] )
 
   FILE *doneFP ;
 
+  int i ;
+
   char *cmdLn[5] ;
+  for( i=0; i<5; i++ ) {cmdLn[i]=NULL;} 
 
   int sysRc = NO_ERROR ;
 
