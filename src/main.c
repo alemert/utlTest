@@ -38,7 +38,7 @@
 /*                                  M A I N                                   */
 /*                                                                            */
 /******************************************************************************/
-#ifndef __TDD__
+//#ifndef __TDD__
 
 int main(int argc, const char* argv[] )
 {
@@ -65,6 +65,17 @@ int main(int argc, const char* argv[] )
                                       cmpErrFile,
                                       doneFile ) ;
 
+  #ifdef __TDD__
+  
+    prinft("%s\n",childPrg);
+    prinft("%s\n",stdOutFile);
+    prinft("%s\n",stdErrFile);
+    prinft("%s\n",cmpOutFile);
+    prinft("%s\n",cmpErrFile);
+    prinft("%s\n",doneFile ) ;
+
+  #endif
+
   if( sysRc != NO_ERROR ) { usage(0) ; exit(1) ; }
 
   #if(0)
@@ -86,7 +97,13 @@ int main(int argc, const char* argv[] )
   // -------------------------------------------------------
   cmdLn[0] = childPrg ;
   cmdLn[1] = NULL ;
+
   sysRc = startChild( childPrg, stdOutFile, stdErrFile, cmdLn ) ;
+
+  #ifdef __TDD__
+    printf("%s(%d)\n",__FILE__,__LINE__);
+  #endif
+
   if( sysRc != 0 ) 
   {
     mAbbort("startChild") ;
@@ -95,6 +112,10 @@ int main(int argc, const char* argv[] )
   {
     sysRc = 0 ;
   }
+
+  #ifdef __TDD__
+    printf("%s(%d)\n",__FILE__,__LINE__);
+  #endif
 
   // -------------------------------------------------------
   // compare files
@@ -128,7 +149,7 @@ _door :
   return sysRc ;
 }
 
-#endif
+//#endif
 
 /******************************************************************************/
 /*                                                                            */
