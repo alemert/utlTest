@@ -67,12 +67,12 @@ int main(int argc, const char* argv[] )
 
   #ifdef __TDD__
   
-    prinft("%s\n",childPrg);
-    prinft("%s\n",stdOutFile);
-    prinft("%s\n",stdErrFile);
-    prinft("%s\n",cmpOutFile);
-    prinft("%s\n",cmpErrFile);
-    prinft("%s\n",doneFile ) ;
+    printf("%s\n",childPrg);
+    printf("%s\n",stdOutFile);
+    printf("%s\n",stdErrFile);
+    printf("%s\n",cmpOutFile);
+    printf("%s\n",cmpErrFile);
+    printf("%s\n",doneFile ) ;
 
   #endif
 
