@@ -56,6 +56,9 @@ int main(int argc, const char* argv[] )
   char cmpErrFile[256] ;
   char doneFile[256]   ;
 
+  FILE *stdOutFp ;
+  FILE *stdErrFp ;
+
   memset( childPrg  , '\0', 256 ) ;
   memset( stdOutFile, '\0', 256 ) ;
   memset( stdErrFile, '\0', 256 ) ;
@@ -111,6 +114,25 @@ int main(int argc, const char* argv[] )
   // -------------------------------------------------------
   cmdLn[0] = childPrg ;
   cmdLn[1] = NULL ;
+
+  // ---------------------------------------------------
+  // open files
+  // ---------------------------------------------------
+  stdOutFp = fopen( stdOutFile, "w" ) ;
+  if( stdOutFp == NULL )
+  {
+    sysRc = errno  ;       // error handling
+    perror( stdOutFile ) ; //
+    goto _door     ;       // quit function with errno
+  }
+
+  stdErrFp = fopen( stdErrFile, "w" ) ;
+  if( stdErrFp == NULL )
+  {
+    sysRc = errno  ;       // error handling
+    perror( stdErrFile ) ; //
+    goto _door     ;       // quit function with errno
+  }
 
   sysRc = startChild( childPrg, stdOutFile, stdErrFile, cmdLn ) ;
 
