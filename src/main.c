@@ -134,7 +134,7 @@ int main(int argc, const char* argv[] )
     goto _door     ;       // quit function with errno
   }
 
-  sysRc = startChild( childPrg, stdOutFile, stdErrFile, cmdLn ) ;
+  sysRc = startChild( childPrg, stdOutFp, stdErrFp, cmdLn ) ;
 
   #ifdef __TDD__
     printf("%s(%d)\n",__FILE__,__LINE__);
