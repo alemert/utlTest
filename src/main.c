@@ -52,8 +52,10 @@ int main(int argc, const char* argv[] )
   char childPrg[256]   ;
   char stdOutFile[256] ;
   char stdErrFile[256] ;
+  char logFile[256]    ;
   char cmpOutFile[256] ;
   char cmpErrFile[256] ;
+  char cmpLogFile[256] ;
   char doneFile[256]   ;
 
   FILE *stdOutFp ;
@@ -62,8 +64,10 @@ int main(int argc, const char* argv[] )
   memset( childPrg  , '\0', 256 ) ;
   memset( stdOutFile, '\0', 256 ) ;
   memset( stdErrFile, '\0', 256 ) ;
+  memset( logFile   , '\0', 256 ) ;
   memset( cmpOutFile, '\0', 256 ) ;
   memset( cmpErrFile, '\0', 256 ) ;
+  memset( cmpLogFile, '\0', 256 ) ;
   memset( doneFile  , '\0', 256 ) ;
 
   FILE *doneFP ;
@@ -78,8 +82,10 @@ int main(int argc, const char* argv[] )
   sysRc = cmdLineHandler( argc, argv, childPrg,
                                       stdOutFile,
                                       stdErrFile,
+                                      logFile   ,
                                       cmpOutFile,
                                       cmpErrFile,
+                                      cmpLogFile,
                                       doneFile ) ;
 
   #ifdef __TDD__
@@ -206,6 +212,8 @@ void usage()
   printf("\tstderr:\tstderr redirection file\n");
   printf("\tcmpout:\tstdout compare file\n");
   printf("\tcmperr:\tstderr compare file\n");
+  printf("\tlog   :\tstderr compare file\n");
+  printf("\tcmplog:\tlog    compare file\n");
   printf("\tdone:\tdone file, created if succesfull\n");
 }
 #endif
@@ -218,8 +226,10 @@ int cmdLineHandler( const int argc            ,
                           char* pChildPrg     ,
                           char* pStdOutFile   ,
                           char* pStdErrFile   ,
+                          char* pLogOutFile   ,
                           char* pCmpOutFile   ,
                           char* pCmpErrFile   ,
+                          char* pLogCmpFile   ,
                           char* pFlagDoneFile )
 {
   int rc = 0 ;
@@ -265,23 +275,38 @@ int cmdLineHandler( const int argc            ,
     rc = 0     ;                    //    return from func 
     goto _door ;                    //    whithout an error
   }                                 //
-  strcpy( pCmpOutFile, argv[4] ) ;  // set stdOut
-
+  strcpy( pLogOutFile, argv[4] ) ;  // set log file
+                                    //
   if( argc == 5 )                   // check for 5th cmd line attr
   {                                 //  if not exists 
     rc = 0     ;                    //    return from func 
     goto _door ;                    //    whithout an error
   }                                 //
-  strcpy( pCmpErrFile, argv[5] ) ;  // set stdOut
-
+  strcpy( pCmpOutFile, argv[5] ) ;  // set stdOut
+                                    //
   if( argc == 6 )                   // check for 6th cmd line attr
   {                                 //  if not exists 
     rc = 0     ;                    //    return from func 
     goto _door ;                    //    whithout an error
   }                                 //
-  strcpy( pFlagDoneFile, argv[6] ) ;//
+  strcpy( pCmpErrFile, argv[6] ) ;  // set stdOut
                                     //
-  if( argc > 7 )                    // check for more then 6 arguments
+  if( argc == 7 )                   // check 7th cmd line attr
+  {                                 //  if not exists
+    rc = 0 ;                        //    return from func 
+    goto _door ;                    //    without an error
+  }                                 //
+  strcpy( pLogCmpFile, argv[7] ) ;  // set log compaire file
+                                    //
+  if( argc == 8 )                   // check 8th cmd line attr
+  {                                 //  if not exists
+    rc = 0 ;                        //    return from func 
+    goto _door ;                    //    without an error
+  }                                 //
+                                    //
+  strcpy( pFlagDoneFile, argv[8] ) ;//
+                                    //
+  if( argc > 8 )                    // check for more then 6 arguments
   {                                 //   return error
     rc = 1     ;                    //
     goto _door ;                    //
