@@ -1,0 +1,1 @@
+001 : problems with comparing log files created directly (not stdout, stderr)
