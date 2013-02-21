@@ -9,7 +9,7 @@
 /******************************************************************************/
 #define NO_ERROR      0  
 
-#define TEST_FORMAT  "# TEST %-5s >>%-20s<< %s(%04d)\n"
+#define TEST_FORMAT  "# TEST %-5s %-10s% >>%-20s<< %s(%04d)\n"
 
 #define TEST_START_TXT  "START"
 #define TEST_OK_TXT     "OK"
@@ -43,31 +43,32 @@
 
 #define describeTestText( comment ) strcpy( _gTestDescription_, comment ) 
 
-#define textMessage( step )  printf( TEST_FORMAT, step, \
-        _gTestDescription_, \
+#define textMessage( step, function )  printf( TEST_FORMAT, step, \
+        function  \
+            _gTestDescription_, \
                                              __FILE__          , \
                                              __LINE__            )
 
-#define setupTest( comment ) describeTestText( comment ) ; \
-                             textMessage( TEST_START_TXT )
+#define setupTest( comment, function ) describeTestText( comment ) ;         \
+                                       textMessage( TEST_START_TXT, function )
 
-#define testOK( )     textMessage( TEST_OK_TXT )
+#define testOK( )     textMessage( TEST_OK_TXT, function )
 
-#define testErr( )   textMessage( TEST_OK_TXT )
+#define testErr( )   textMessage( TEST_OK_TXT, function )
 
 #define doTest( description,      \
                 rc,               \
                 function, ...  )  \
-{                                         \
-  char _gTestDescription_[64] ;           \
-  setupTest( description ) ;              \
-    int _rc = function ( __VA_ARGS__  ) ; \
-    if( _rc != rc )                       \
-    {                                     \
-      testErr( ) ;                        \
-      goto _door ;                        \
-    }                                     \
-    testOK( ) ;                           \
+{                                       \
+  char _gTestDescription_[64] ;         \
+  setupTest( description, function )  ; \
+  int _rc = function ( __VA_ARGS__  ) ; \
+  if( _rc != rc )                       \
+  {                                     \
+    testErr( ) ;                        \
+    goto _door ;                        \
+  }                                     \
+  testOK( ) ;                           \
 }
 
 /******************************************************************************/
