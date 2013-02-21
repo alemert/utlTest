@@ -132,7 +132,7 @@ int main(int argc, const char** argv )
     goto _door ;
   }
 
-  errTestStep( "count words buffer overflow" ) ;
+  okTestStep( "count words buffer overflow" ) ;
   
   startTestStep( "count words one word" ) ;
 

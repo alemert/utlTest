@@ -1,0 +1,40 @@
+# testing	check file rights	in test/src/t000.c line 85
+# tested ok	check file rights	in test/src/t000.c line 98
+# testing	check file rights	in test/src/t000.c line 100
+# tested ok	check file rights	in test/src/t000.c line 109
+# testing	count words empty sring	in test/src/t000.c line 115
+# tested ok	count words empty sring	in test/src/t000.c line 124
+# testing	count words buffer overflow	in test/src/t000.c line 126
+# tested ok	count words buffer overflow	in test/src/t000.c line 135
+# testing	count words one word	in test/src/t000.c line 137
+# tested ok	count words one word	in test/src/t000.c line 147
+# testing	count words one word	in test/src/t000.c line 149
+# tested ok	count words one word	in test/src/t000.c line 158
+# testing	count words buffer overflow	in test/src/t000.c line 160
+# tested ok	count words buffer overflow	in test/src/t000.c line 169
+# testing	count words two words	in test/src/t000.c line 171
+# tested ok	count words two words	in test/src/t000.c line 180
+# testing	count words multiple blanks	in test/src/t000.c line 182
+# tested ok	count words multiple blanks	in test/src/t000.c line 191
+# testing	count words non pritible	in test/src/t000.c line 193
+# tested ok	count words non pritible	in test/src/t000.c line 202
+# testing	alloc word empty string	in test/src/t000.c line 209
+# tested ok	alloc word empty string	in test/src/t000.c line 220
+# testing	alloc word blank string	in test/src/t000.c line 222
+# tested ok	alloc word blank string	in test/src/t000.c line 232
+# testing	alloc word test one word	in test/src/t000.c line 234
+# tested ok	alloc word test one word	in test/src/t000.c line 245
+# testing	alloc word test one word	in test/src/t000.c line 247
+# tested ok	alloc word test one word	in test/src/t000.c line 258
+# testing	alloc word test one letter	in test/src/t000.c line 260
+# tested ok	alloc word test one letter	in test/src/t000.c line 271
+# testing	alloc word blank - one letter	in test/src/t000.c line 273
+# tested ok	alloc word blank - one letter	in test/src/t000.c line 284
+# testing	alloc word one letter - blank	in test/src/t000.c line 286
+# tested ok	alloc word one letter - blank	in test/src/t000.c line 297
+# testing	alloc word first out of two word	in test/src/t000.c line 299
+# tested ok	alloc word first out of two word	in test/src/t000.c line 310
+# testing	alloc word secound out of two word	in test/src/t000.c line 312
+# tested ok	alloc word secound out of two word	in test/src/t000.c line 323
+# testing	alloc word secound out of two word	in test/src/t000.c line 325
+# tested ok	alloc word secound out of two word	in test/src/t000.c line 336
