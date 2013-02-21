@@ -167,13 +167,25 @@ int main(int argc, const char* argv[] )
   sysRc = diffLog( stdOutFile, cmpOutFile ) ;
   if( sysRc != NO_ERROR ) 
   {
-    mAbbort( stdOutFile ) ;
+    fprintf( stderr, "diff failed: %s, %s\n",cmpOutFile, stdOutFile ) ;
+    goto _door ;
+  //mAbbort( stdOutFile ) ;
   }
 
   sysRc = diff( cmpErrFile, stdErrFile ) ;
   if( sysRc != NO_ERROR ) 
   {
-    mAbbort( stdErrFile ) ;
+    fprintf( stderr, "diff failed: %s, %s\n",cmpErrFile, stdErrFile ) ;
+    goto _door ;
+  //mAbbort( stdErrFile ) ;
+  }
+
+  sysRc = diff( cmpLogFile, logFile ) ;
+  if( sysRc != NO_ERROR ) 
+  {
+    fprintf( stderr, "diff failed: %s, %s\n",cmpLogFile, logFile ) ;
+    goto _door ;
+  //mAbbort( stdErrFile ) ;
   }
 
   doneFP = fopen( doneFile, "w" ) ;
@@ -308,7 +320,7 @@ int cmdLineHandler( const int argc            ,
                                     //
   strcpy( pFlagDoneFile, argv[8] ) ;//
                                     //
-  if( argc > 8 )                    // check for more then 6 arguments
+  if( argc > 9 )                    // check for more then 9 arguments
   {                                 //   return error
     rc = 1     ;                    //
     goto _door ;                    //
