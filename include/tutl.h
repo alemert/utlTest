@@ -7,11 +7,21 @@
 /******************************************************************************/
 /*   D E F I N E S                                                            */
 /******************************************************************************/
-#define NO_ERROR   0  
+#define NO_ERROR      0  
+
+#define TEST_FORMAT  "# TEST %-5s >>%-20s<< %s(%04d)\n"
+
+#define TEST_START_TXT  "START"
+#define TEST_OK_TXT     "OK"
+#define TEST_ERR_TXT    "ERR"
 
 /******************************************************************************/
 /*   M A C R O S                                                              */
 /******************************************************************************/
+
+// -----------------------------------------------------------------------------
+// old macros
+// -----------------------------------------------------------------------------
 #define startTestStep( comment ) printf("# testing\t%16s\tin %s line %d\n", \
                                            comment,  \
                                            __FILE__, \
@@ -27,6 +37,39 @@
                                           __FILE__, \
                                           __LINE__  )
 
+// -----------------------------------------------------------------------------
+// new macros
+// -----------------------------------------------------------------------------
+
+#define describeTestText( comment ) strcpy( _gTestDescription_, comment ) 
+
+#define textMessage( step )  printf( TEST_FORMAT, step, \
+        _gTestDescription_, \
+                                             __FILE__          , \
+                                             __LINE__            )
+
+#define setupTest( comment ) describeTestText( comment ) ; \
+                             textMessage( TEST_START_TXT )
+
+#define testOK( )     textMessage( TEST_OK_TXT )
+
+#define testErr( )   textMessage( TEST_OK_TXT )
+
+#define doTest( description,      \
+                rc,               \
+                function, ...  )  \
+{                                         \
+  char _gTestDescription_[64] ;           \
+  setupTest( description ) ;              \
+    int _rc = function ( __VA_ARGS__  ) ; \
+    if( _rc != rc )                       \
+    {                                     \
+      testErr( ) ;                        \
+      goto _door ;                        \
+    }                                     \
+    testOK( ) ;                           \
+}
+
 /******************************************************************************/
 /*   S T R U C T S                                                            */
 /******************************************************************************/
@@ -39,6 +82,10 @@ struct sTstCfg
   int  rc        ;             // exit code of the tested program
   char cmpFile[FILENAME_MAX] ; // compaire file for stdout of the tested prg
 } ;
+
+/******************************************************************************/
+/*   G L O B A L S                   */
+/******************************************************************************/
 
 /******************************************************************************/
 /*   P R O T O T Y P E S                                                      */
