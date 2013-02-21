@@ -9,7 +9,7 @@
 /******************************************************************************/
 #define NO_ERROR      0  
 
-#define TEST_FORMAT  "# TEST %-5s %-10s% >>%-20s<< %s(%04d)\n"
+#define TEST_FORMAT  "# TEST %-5s %-10s >>%-20s<< %s(%04d)\n"
 
 #define TEST_START_TXT  "START"
 #define TEST_OK_TXT     "OK"
