@@ -45,7 +45,7 @@ include $(MAKE_INCLUDE_PATH)/general.modules.mk
 # ------------------------------------------------------------------------------
 # test is to be adjustet
 # ------------------------------------------------------------------------------
-TEST = 
+TEST = t000
 include $(MAKE_INCLUDE_PATH)/test.mk
 
 #test : t000 

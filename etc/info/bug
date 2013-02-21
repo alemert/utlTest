@@ -1,1 +1,2 @@
 001 : problems with comparing log files created directly (not stdout, stderr)
+002 : test utility core due to new cmdln attributes (application logs)
