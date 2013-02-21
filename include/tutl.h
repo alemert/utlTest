@@ -41,14 +41,17 @@
 // new macros
 // -----------------------------------------------------------------------------
 
+#define FUNCTION_NAME_MACRO( funciton) #funcition
+
 #define describeTestText( comment ) strcpy( _gTestDescription_, comment ) 
 
-#define textMessage( step, function ) printf( TEST_FORMAT       , \
-                                              step              , \
-                                              #function         , \
-                                              _gTestDescription_, \
-                                             __FILE__           , \
-                                             __LINE__             )
+#define textMessage( step, function ) \
+  printf( TEST_FORMAT               , \
+  step                              , \
+  #FUNCTION_NAME_MACRO( funciton )  , \
+  _gTestDescription_                , \
+  __FILE__                          , \
+  __LINE__ )
 
 #define setupTest( comment, function ) describeTestText( comment ) ;         \
                                        textMessage( TEST_START_TXT, function )
