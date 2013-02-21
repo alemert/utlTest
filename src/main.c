@@ -93,8 +93,10 @@ int main(int argc, const char* argv[] )
     printf("%s\n",childPrg);
     printf("%s\n",stdOutFile);
     printf("%s\n",stdErrFile);
+    printf("%s\n",logFile);
     printf("%s\n",cmpOutFile);
     printf("%s\n",cmpErrFile);
+    printf("%s\n",cmpLogFile);
     printf("%s\n",doneFile ) ;
 
   #endif
