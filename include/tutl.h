@@ -69,10 +69,10 @@
   int _rc = function ( __VA_ARGS__  ) ; \
   if( _rc != rc )                       \
   {                                     \
-    testErr( ) ;                        \
+    testErr( function ) ;               \
     goto _door ;                        \
   }                                     \
-  testOK( ) ;                           \
+  testOK(function  ) ;                  \
 }
 
 /******************************************************************************/
