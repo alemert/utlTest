@@ -20,7 +20,47 @@
 /******************************************************************************/
 
 // -----------------------------------------------------------------------------
+// new macros
+// -----------------------------------------------------------------------------
+
+// ---------------------------------------------------------
+// macro for printing out the line, 
+/      it can only be called from macro doTest
+// ---------------------------------------------------------
+#define textMessage( step, function ) \
+  printf( TEST_FORMAT               , \
+  step                              , \
+  #function                         , \
+  _gTestDescription_                , \
+  __FILE__                          , \
+  __LINE__ )
+
+// ---------------------------------------------------------
+// testing macro 
+//   callg the function 
+//   check the output
+// ---------------------------------------------------------
+#define doTest( description,         \
+                rc         ,         \
+                function   , ...  )  \
+{                                                   \
+  char _gTestDescription_[64] ;                     \
+                                                    \
+  strcpy(      _gTestDescription_, description ) ;  \
+  textMessage( TEST_START_TXT    , function    ) ;  \
+                                                    \
+  int _rc = function ( __VA_ARGS__  ) ;             \
+  if( _rc != rc )                                   \
+  {                                                 \
+    textMessage( TEST_ERR_TXT, function ) ;         \
+    goto _door ;                                    \
+  }                                                 \
+  textMessage( TEST_OK_TXT, function ) ;            \
+}
+
+// -----------------------------------------------------------------------------
 // old macros
+//   old macros are needed for compatibility
 // -----------------------------------------------------------------------------
 #define startTestStep( comment ) printf("# testing\t%16s\tin %s line %d\n", \
                                            comment,  \
@@ -36,37 +76,6 @@
                                           comment,  \
                                           __FILE__, \
                                           __LINE__  )
-
-// -----------------------------------------------------------------------------
-// new macros
-// -----------------------------------------------------------------------------
-#define testOK( function )     textMessage( TEST_OK_TXT, function )
-
-#define testErr( function )    textMessage( TEST_OK_TXT, function )
-
-#define textMessage( step, function ) \
-  printf( TEST_FORMAT               , \
-  step                              , \
-  #function                         , \
-  _gTestDescription_                , \
-  __FILE__                          , \
-  __LINE__ )
-
-#define doTest( description,      \
-                rc,               \
-                function, ...  )  \
-{                                       \
-  char _gTestDescription_[64] ;         \
-  strcpy( _gTestDescription_, description ) ; \
-  textMessage( TEST_START_TXT, function ) ; \
-  int _rc = function ( __VA_ARGS__  ) ; \
-  if( _rc != rc )                       \
-  {                                     \
-    textMessage( TEST_ERR_TXT, function ) ; \
-    goto _door ;                        \
-  }                                     \
-  textMessage( TEST_OK_TXT, function ) ; \
-}
 
 /******************************************************************************/
 /*   S T R U C T S                                                            */
