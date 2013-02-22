@@ -56,7 +56,7 @@
   {                                                 \
     textMessage( TEST_ERR_TXT, function ) ;         \
     goto _door ;                                    \
-    sysRc = ERROR ;      \
+    sysRc = TEST_ERROR ;      \
   }                                                 \
   textMessage( TEST_OK_TXT, function ) ;            \
 }
