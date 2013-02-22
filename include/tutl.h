@@ -56,9 +56,9 @@
 #define setupTest( comment, function ) describeTestText( comment ) ;         \
                                        textMessage( TEST_START_TXT, function )
 
-#define testOK( )     textMessage( TEST_OK_TXT, function )
+#define testOK( function )     textMessage( TEST_OK_TXT, function )
 
-#define testErr( )   textMessage( TEST_OK_TXT, function )
+#define testErr( function )    textMessage( TEST_OK_TXT, function )
 
 #define doTest( description,      \
                 rc,               \
