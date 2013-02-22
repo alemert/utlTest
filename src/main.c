@@ -198,7 +198,8 @@ int main(int argc, const char* argv[] )
 
 _door :
 
-  printf("test: %s\t", (char*) basename( childPrg ) );
+  printf("test: %s%s%*.*s ", (char*) basename( childPrg ), 
+                             " ",20,20,"...................." );
   if( sysRc == 0 ) { printf("ok\n") ; }
   else             { printf("err\n") ; }
 
