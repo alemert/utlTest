@@ -2,3 +2,4 @@
 002 : test utility core due to new cmdln attributes (application logs)
 003 : error in new macros (tutl.h)
 004 : changing output test: {test_name}
+005 : bug, sysRc not set in doTest macro

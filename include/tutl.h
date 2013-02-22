@@ -8,6 +8,7 @@
 /*   D E F I N E S                                                            */
 /******************************************************************************/
 #define NO_ERROR      0  
+#define TEST_ERROR    1  
 
 #define TEST_FORMAT  "# TEST %-5s %-10s >>%-20s<< %s(%04d)\n"
 
@@ -48,12 +49,14 @@
                                                     \
   strcpy(      _gTestDescription_, description ) ;  \
   textMessage( TEST_START_TXT    , function    ) ;  \
+  sysRc = NO_ERROR ;      \
                                                     \
   int _rc = function ( __VA_ARGS__  ) ;             \
   if( _rc != rc )                                   \
   {                                                 \
     textMessage( TEST_ERR_TXT, function ) ;         \
     goto _door ;                                    \
+    sysRc = ERROR ;      \
   }                                                 \
   textMessage( TEST_OK_TXT, function ) ;            \
 }
