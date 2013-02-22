@@ -40,8 +40,6 @@
 // -----------------------------------------------------------------------------
 // new macros
 // -----------------------------------------------------------------------------
-#define describeTestText( comment ) strcpy( _gTestDescription_, comment ) 
-
 #define testOK( function )     textMessage( TEST_OK_TXT, function )
 
 #define testErr( function )    textMessage( TEST_OK_TXT, function )
@@ -64,10 +62,10 @@
   int _rc = function ( __VA_ARGS__  ) ; \
   if( _rc != rc )                       \
   {                                     \
-    testErr( function ) ;               \
+    textMessage( TEST_ERR_TXT, function ) ; \
     goto _door ;                        \
   }                                     \
-  testOK(function  ) ;                  \
+  textMessage( TEST_OK_TXT, function ) ; \
 }
 
 /******************************************************************************/
