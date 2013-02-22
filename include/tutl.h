@@ -40,15 +40,16 @@
 // -----------------------------------------------------------------------------
 // new macros
 // -----------------------------------------------------------------------------
-
-//#define FUNCTION_NAME_MACRO( n ) ##n  
-
 #define describeTestText( comment ) strcpy( _gTestDescription_, comment ) 
+
+#define testOK( function )     textMessage( TEST_OK_TXT, function )
+
+#define testErr( function )    textMessage( TEST_OK_TXT, function )
 
 #define textMessage( step, function ) \
   printf( TEST_FORMAT               , \
   step                              , \
-  #function    , \
+  #function                         , \
   _gTestDescription_                , \
   __FILE__                          , \
   __LINE__ )
@@ -56,16 +57,14 @@
 #define setupTest( comment, function ) describeTestText( comment ) ;         \
                                        textMessage( TEST_START_TXT, function )
 
-#define testOK( function )     textMessage( TEST_OK_TXT, function )
-
-#define testErr( function )    textMessage( TEST_OK_TXT, function )
 
 #define doTest( description,      \
                 rc,               \
                 function, ...  )  \
 {                                       \
   char _gTestDescription_[64] ;         \
-  setupTest( description, function )  ; \
+  describeTestText( comment ) ;         \
+  textMessage( TEST_START_TXT, function ) ; \
   int _rc = function ( __VA_ARGS__  ) ; \
   if( _rc != rc )                       \
   {                                     \
