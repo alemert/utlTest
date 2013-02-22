@@ -52,13 +52,16 @@
   sysRc = NO_ERROR ;      \
                                                     \
   int _rc = function ( __VA_ARGS__  ) ;             \
+  printf( "init sysRc:%d rc:%d _rc:%d\n",sysRc,rc,_rc);  \
   if( _rc != rc )                                   \
   {                                                 \
     textMessage( TEST_ERR_TXT, function ) ;         \
     goto _door ;                                    \
     sysRc = TEST_ERROR ;      \
+    printf( "err  sysRc:%d rc:%d _rc:%d\n",sysRc,rc,_rc);  \
   }                                                 \
   textMessage( TEST_OK_TXT, function ) ;            \
+  printf( "ok   sysRc:%d rc:%d _rc:%d\n",sysRc,rc,_rc);  \
 }
 
 // -----------------------------------------------------------------------------
