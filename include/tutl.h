@@ -25,7 +25,7 @@
 
 // ---------------------------------------------------------
 // macro for printing out the line, 
-/      it can only be called from macro doTest
+//     it can only be called from macro doTest
 // ---------------------------------------------------------
 #define textMessage( step, function ) \
   printf( TEST_FORMAT               , \
