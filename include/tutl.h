@@ -63,7 +63,7 @@
                 function, ...  )  \
 {                                       \
   char _gTestDescription_[64] ;         \
-  describeTestText( comment ) ;         \
+  describeTestText( description ) ;         \
   textMessage( TEST_START_TXT, function ) ; \
   int _rc = function ( __VA_ARGS__  ) ; \
   if( _rc != rc )                       \
