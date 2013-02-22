@@ -54,16 +54,12 @@
   __FILE__                          , \
   __LINE__ )
 
-#define setupTest( comment, function ) describeTestText( comment ) ;         \
-                                       textMessage( TEST_START_TXT, function )
-
-
 #define doTest( description,      \
                 rc,               \
                 function, ...  )  \
 {                                       \
   char _gTestDescription_[64] ;         \
-  describeTestText( description ) ;         \
+  strcpy( _gTestDescription_, description ) ; \
   textMessage( TEST_START_TXT, function ) ; \
   int _rc = function ( __VA_ARGS__  ) ; \
   if( _rc != rc )                       \
