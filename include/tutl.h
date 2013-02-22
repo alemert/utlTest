@@ -41,7 +41,7 @@
 // new macros
 // -----------------------------------------------------------------------------
 
-#define FUNCTION_NAME_MACRO( n ) #n  
+#define FUNCTION_NAME_MACRO( n ) ##n  
 
 #define describeTestText( comment ) strcpy( _gTestDescription_, comment ) 
 
