@@ -48,7 +48,7 @@
 #define textMessage( step, function ) \
   printf( TEST_FORMAT               , \
   step                              , \
-  ##funciton    , \
+  funciton    , \
   _gTestDescription_                , \
   __FILE__                          , \
   __LINE__ )
