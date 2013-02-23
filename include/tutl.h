@@ -69,7 +69,7 @@
 // function returns pointer
 // ---------------------------------------------------------
 #define doPointTest( description,         \
-                     rc         ,         \
+                     operator   ,         \
                      function   , ...  )  \
 {                                                   \
   char _gTestDescription_[64] ;                     \
@@ -79,7 +79,7 @@
   sysRc = NO_ERROR ;                                \
                                                     \
   void * _rc = (void*) function ( __VA_ARGS__  ) ;  \
-  if( _rc != rc )                                   \
+  if( _rc operator NULL )                           \
   {                                                 \
     textMessage( TEST_ERR_TXT, function ) ;         \
     sysRc = TEST_ERROR ;                            \
