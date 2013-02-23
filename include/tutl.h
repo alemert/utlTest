@@ -37,13 +37,17 @@
   __LINE__ )
 
 // ---------------------------------------------------------
-// testing macro 
+// testing macros 
 //   callg the function 
 //   check the output
 // ---------------------------------------------------------
-#define doTest( description,         \
-                rc         ,         \
-                function   , ...  )  \
+
+// ---------------------------------------------------------
+// function returns int
+// ---------------------------------------------------------
+#define doIntTest( description,         \
+                   rc         ,         \
+                   function   , ...  )  \
 {                                                   \
   char _gTestDescription_[64] ;                     \
                                                     \
@@ -52,6 +56,29 @@
   sysRc = NO_ERROR ;                                \
                                                     \
   int _rc = function ( __VA_ARGS__  ) ;             \
+  if( _rc != rc )                                   \
+  {                                                 \
+    textMessage( TEST_ERR_TXT, function ) ;         \
+    sysRc = TEST_ERROR ;                            \
+    goto _door ;                                    \
+  }                                                 \
+  textMessage( TEST_OK_TXT, function ) ;            \
+}
+
+// ---------------------------------------------------------
+// function returns pointer
+// ---------------------------------------------------------
+#define doPointTest( description,         \
+                     rc         ,         \
+                     function   , ...  )  \
+{                                                   \
+  char _gTestDescription_[64] ;                     \
+                                                    \
+  strcpy(      _gTestDescription_, description ) ;  \
+  textMessage( TEST_START_TXT    , function    ) ;  \
+  sysRc = NO_ERROR ;                                \
+                                                    \
+  void * _rc = (void*) function ( __VA_ARGS__  ) ;  \
   if( _rc != rc )                                   \
   {                                                 \
     textMessage( TEST_ERR_TXT, function ) ;         \

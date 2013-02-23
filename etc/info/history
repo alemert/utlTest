@@ -1,3 +1,6 @@
 001 : version 0.1.0 logging in log file 
 002 : version 1.0.0 new macros in tutl.h
 003 : version 1.1.0 function name in output of new macros
+004 : version 2.0.0 handle pointer in macros;
+                    rename doTest to doIntTest
+
