@@ -31,7 +31,7 @@
 /*   D E F I N E S                                                            */
 /******************************************************************************/
 #define DOTS_STR "..............."
-#define DOTS_LEN strlen( DOTS_STR )
+#define DOTS_LEN (int) strlen( DOTS_STR )
 
 /******************************************************************************/
 /*   M A C R O S                                                              */
@@ -200,10 +200,11 @@ int main(int argc, const char* argv[] )
 
 _door :
 
-  printf("test: %s %.*s ", (char*)                  basename( childPrg )     ,
-                           (    DOTS_LEN < strlen( basename( childPrg )) ) ? \
-                            0 : DOTS_LEN - strlen( basename( childPrg ))     ,
-                                DOTS_STR ) ;
+  printf("test: %s %.*s ", 
+                    (char*) basename( childPrg )     ,
+                    ( DOTS_LEN < (int) strlen( basename( childPrg )) ) ?  0 \
+                    : DOTS_LEN - (int) strlen( basename( childPrg ))     ,
+                      DOTS_STR ) ;
   
   if( sysRc == 0 ) { printf("ok\n") ; }
   else             { printf("err\n") ; }

@@ -49,19 +49,16 @@
                                                     \
   strcpy(      _gTestDescription_, description ) ;  \
   textMessage( TEST_START_TXT    , function    ) ;  \
-  sysRc = NO_ERROR ;      \
+  sysRc = NO_ERROR ;                                \
                                                     \
   int _rc = function ( __VA_ARGS__  ) ;             \
-  printf( "init sysRc:%d rc:%d _rc:%d\n",sysRc,rc,_rc);  \
   if( _rc != rc )                                   \
   {                                                 \
     textMessage( TEST_ERR_TXT, function ) ;         \
-    sysRc = TEST_ERROR ;      \
-    printf( "err  sysRc:%d rc:%d _rc:%d\n",sysRc,rc,_rc);  \
+    sysRc = TEST_ERROR ;                            \
     goto _door ;                                    \
   }                                                 \
   textMessage( TEST_OK_TXT, function ) ;            \
-  printf( "ok   sysRc:%d rc:%d _rc:%d\n",sysRc,rc,_rc);  \
 }
 
 // -----------------------------------------------------------------------------

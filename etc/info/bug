@@ -5,3 +5,4 @@
 005 : bug, sysRc not set in doTest macro
 006 : bug, wrong define ERROR instand of TEST_ERROR
 007 : bug, sysRc set but does not work
+008 : removing some debugging output from macros
