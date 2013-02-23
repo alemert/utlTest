@@ -146,13 +146,11 @@ int main(int argc, const char* argv[] )
 
   sysRc = startChild( childPrg, stdOutFp, stdErrFp, cmdLn ) ;
 
-  #ifdef __TDD__
-    printf("%s(%d)\n",__FILE__,__LINE__);
-  #endif
-
   if( sysRc != 0 ) 
   {
-    mAbbort("startChild") ;
+    fprintf( stderr, "%s: test failed\n" ) ;
+    goto _door ;
+//  mAbbort("startChild") ;
   }
   else
   {
