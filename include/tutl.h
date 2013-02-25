@@ -82,7 +82,7 @@
   sysRc = NO_ERROR ;                                \
                                                     \
   void * _rc = (void*) function ( __VA_ARGS__  ) ;  \
-  if( ((void*) _rc) operator ((void*) NULL( )       \
+  if( ((void*) _rc) operator ((void*) NULL) )       \
   {                                                 \
     textMessage( TEST_ERR_TXT, function ) ;         \
     sysRc = TEST_ERROR ;                            \
