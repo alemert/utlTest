@@ -8,3 +8,4 @@
 008 : removing some debugging output from macros
 009 : no text if test failed
 010 : doPointTest syntax fehler
+011 : wrong printf format in main.c for failing test

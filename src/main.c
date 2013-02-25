@@ -148,18 +148,14 @@ int main(int argc, const char* argv[] )
 
   if( sysRc != 0 ) 
   {
-    fprintf( stderr, "%s: test failed\n" ) ;
-    goto _door ;
+    fprintf( stderr, "%s: test failed\n",childPrg ) ;
+//  goto _door ;
 //  mAbbort("startChild") ;
   }
   else
   {
     sysRc = 0 ;
   }
-
-  #ifdef __TDD__
-    printf("%s(%d)\n",__FILE__,__LINE__);
-  #endif
 
   // -------------------------------------------------------
   // compare files
