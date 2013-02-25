@@ -16,6 +16,9 @@
 #define TEST_OK_TXT     "OK"
 #define TEST_ERR_TXT    "ERR"
 
+#define RC_IS_NULL      ==
+#define RC_NOT_NULL     !=
+
 /******************************************************************************/
 /*   M A C R O S                                                              */
 /******************************************************************************/
@@ -79,7 +82,7 @@
   sysRc = NO_ERROR ;                                \
                                                     \
   void * _rc = (void*) function ( __VA_ARGS__  ) ;  \
-  if( _rc operator NULL )                           \
+  if( ((void*) _rc) operator ((void*) NULL( )       \
   {                                                 \
     textMessage( TEST_ERR_TXT, function ) ;         \
     sysRc = TEST_ERROR ;                            \
