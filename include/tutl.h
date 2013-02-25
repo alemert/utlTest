@@ -16,8 +16,8 @@
 #define TEST_OK_TXT     "OK"
 #define TEST_ERR_TXT    "ERR"
 
-#define RC_IS_NULL      ==
-#define RC_NOT_NULL     !=
+#define RC_IS_NULL      !=
+#define RC_NOT_NULL     ==
 
 /******************************************************************************/
 /*   M A C R O S                                                              */
