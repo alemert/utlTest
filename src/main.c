@@ -148,7 +148,7 @@ int main(int argc, const char* argv[] )
 
   if( sysRc != 0 ) 
   {
-    fprintf( stderr, "%s: test failed\n",childPrg ) ;
+    fprintf( stderr, "%s: test failed\n",basename(childPrg) ) ;
 //  goto _door ;
 //  mAbbort("startChild") ;
   }
