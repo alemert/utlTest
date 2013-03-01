@@ -176,7 +176,7 @@ int main(int argc, const char* argv[] )
   //mAbbort( stdErrFile ) ;
   }
 
-  sysRc = diff( cmpLogFile, logFile ) ;
+  sysRc = diffLog( cmpLogFile, logFile ) ;
   if( sysRc != NO_ERROR ) 
   {
     fprintf( stderr, "diff failed: %s, %s\n",cmpLogFile, logFile ) ;
