@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <libgen.h>
+#include <unistd.h>
 
 #ifdef __sun
 #include <strings.h>
@@ -62,6 +63,7 @@ int main(int argc, const char* argv[] )
 
   FILE *stdOutFp ;
   FILE *stdErrFp ;
+  FILE *stdLogFp ;
 
   memset( childPrg  , '\0', 256 ) ;
   memset( stdOutFile, '\0', 256 ) ;
@@ -143,6 +145,13 @@ int main(int argc, const char* argv[] )
     perror( stdErrFile ) ; //
     goto _door     ;       // quit function with errno
   }
+
+  stdLogFp = fopen( logFile, "r" ) ;  // remove log file if exists
+  if( stdLogFp != NULL )  // remove log file if exists
+  {
+    fclose( stdLogFp ) ;
+  }
+    if( errno != ENOENT ) unlink( logFile ) ;
 
   sysRc = startChild( childPrg, stdOutFp, stdErrFp, cmdLn ) ;
 
