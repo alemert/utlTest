@@ -62,7 +62,7 @@
   if( _rc != rc )                                   \
   {                                                 \
     textMessage( TEST_ERR_TXT, function ) ;         \
-    sysRc = TEST_ERROR ;                            \
+    sysRc = _rc ;                                   \
     goto _door ;                                    \
   }                                                 \
   textMessage( TEST_OK_TXT, function ) ;            \
