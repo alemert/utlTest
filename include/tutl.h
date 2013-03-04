@@ -59,6 +59,7 @@
   sysRc = NO_ERROR ;                                \
                                                     \
   int _rc = function ( __VA_ARGS__  ) ;             \
+printf( "%d:%d\n",_rc,rc ) ; \
   if( _rc != rc )                                   \
   {                                                 \
     textMessage( TEST_ERR_TXT, function ) ;         \
