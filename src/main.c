@@ -153,8 +153,8 @@ int main(int argc, const char* argv[] )
     fclose( stdLogFp ) ;
   }
     if( errno != ENOENT ) unlink( logFile ) ;
-  flushFile( logFile ) ;
 #endif
+  flushFile( logFile ) ;
 
   sysRc = startChild( childPrg, stdOutFp, stdErrFp, cmdLn ) ;
 
