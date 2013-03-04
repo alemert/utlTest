@@ -56,6 +56,7 @@
                                                     \
   strcpy(      _gTestDescription_, description ) ;  \
   textMessage( TEST_START_TXT    , function    ) ;  \
+  errno = 0 ;      \
   sysRc = NO_ERROR ;                                \
                                                     \
   int _rc = function ( __VA_ARGS__  ) ;             \
