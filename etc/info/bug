@@ -12,3 +12,4 @@
 012 : diff replaced with diffLog for log files
 013 : removing log file before forking
 014 : flus log file instand of removing it
+015 : textMessage macro syntay bug
