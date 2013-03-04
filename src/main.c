@@ -63,7 +63,7 @@ int main(int argc, const char* argv[] )
 
   FILE *stdOutFp ;
   FILE *stdErrFp ;
-  FILE *stdLogFp ;
+//FILE *stdLogFp ;
 
   memset( childPrg  , '\0', 256 ) ;
   memset( stdOutFile, '\0', 256 ) ;
@@ -146,12 +146,15 @@ int main(int argc, const char* argv[] )
     goto _door     ;       // quit function with errno
   }
 
+#if(0)
   stdLogFp = fopen( logFile, "r" ) ;  // remove log file if exists
   if( stdLogFp != NULL )  // remove log file if exists
   {
     fclose( stdLogFp ) ;
   }
     if( errno != ENOENT ) unlink( logFile ) ;
+#endif
+  flushFile( logFile ) ;
 
   sysRc = startChild( childPrg, stdOutFp, stdErrFp, cmdLn ) ;
 
