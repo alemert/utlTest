@@ -10,7 +10,7 @@
 #define NO_ERROR      0  
 #define TEST_ERROR    1  
 
-#define TEST_FORMAT  "# TEST %-5s %-10s >>%-20s<< %03d :%03d %s(%04d)\n"
+#define TEST_FORMAT  "# TEST %-5s %-10s >>%-20s<< %s(%04d)\n"
 
 #define TEST_START_TXT  "START"
 #define TEST_OK_TXT     "OK"
@@ -62,7 +62,7 @@
   if( _rc != rc )                                   \
   {                                                 \
     textMessage( TEST_ERR_TXT, function ) ;         \
-    printf( "              rcReal:  %d rcGoal: %d\n",_rc,rc ) ; \
+    printf( "              rcReal:  %03d rcGoal: %03d\n",_rc,rc ) ; \
     sysRc = _rc ;                                   \
     goto _door ;                                    \
   }                                                 \
