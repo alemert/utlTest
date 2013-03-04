@@ -10,7 +10,7 @@
 #define NO_ERROR      0  
 #define TEST_ERROR    1  
 
-#define TEST_FORMAT  "# TEST %-5s %-10s >>%-20s<< %s(%04d)\n"
+#define TEST_FORMAT  "# TEST %-5s %-10s >>%-20s<< %03d :%03d %s(%04d)\n"
 
 #define TEST_START_TXT  "START"
 #define TEST_OK_TXT     "OK"
@@ -31,7 +31,7 @@
 // macro for printing out the line, 
 //     it can only be called from macro doTest
 // ---------------------------------------------------------
-#define textMessage( step, function ) \
+#define textMessage( step, function, ) \
   printf( TEST_FORMAT               , \
   step                              , \
   #function                         , \
@@ -59,10 +59,10 @@
   sysRc = NO_ERROR ;                                \
                                                     \
   int _rc = function ( __VA_ARGS__  ) ;             \
-printf( "%d:%d\n",_rc,rc ) ; \
   if( _rc != rc )                                   \
   {                                                 \
     textMessage( TEST_ERR_TXT, function ) ;         \
+    printf( "              rcReal:  %d rcGoal: %d\n",_rc,rc ) ; \
     sysRc = _rc ;                                   \
     goto _door ;                                    \
   }                                                 \

@@ -4,3 +4,5 @@
 004 : version 2.0.0 handle pointer in macros;
                     rename doTest to doIntTest
 005 : version 2.1.0 define RC_IS_NULL and RC_NOT_NULL added
+006 : version 2.1.0 define RC_IS_NULL and RC_NOT_NULL added
+007 : version 2.2.0 Error doIntTest, print out rc in additional line
