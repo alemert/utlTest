@@ -10,7 +10,8 @@
 #define NO_ERROR      0  
 #define TEST_ERROR    1  
 
-#define TEST_FORMAT  "# TEST %-5s %-10s >>%-20s<< %s(%04d)\n"
+#define TEST_FORMAT   "# TEST %-5s %-10s >>%-20s<< %s(%04d)\n"
+#define CHECK_FORMAT  "# CHECK %-4s %-10s >>%-20s<< %s(%04d)\n"
 
 #define TEST_START_TXT  "START"
 #define TEST_OK_TXT     "OK"
@@ -26,6 +27,14 @@
 // -----------------------------------------------------------------------------
 // new macros
 // -----------------------------------------------------------------------------
+
+#define checkMessage( step, function ) \
+  printf( CHECK_FORMAT               , \
+  step                               , \
+  #function                          , \
+  _gTestDescription_                 , \
+  __FILE__                           , \
+  __LINE__ )
 
 // ---------------------------------------------------------
 // macro for printing out the line, 
