@@ -32,7 +32,7 @@
   printf( CHECK_FORMAT               , \
   step                               , \
   #function                          , \
-  _gTestDescription_                 , \
+  " "                                , \
   __FILE__                           , \
   __LINE__ )
 
