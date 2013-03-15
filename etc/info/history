@@ -7,3 +7,4 @@
 006 : version 2.1.0 define RC_IS_NULL and RC_NOT_NULL added
 007 : version 2.2.0 Error doIntTest, print out rc in additional line
 008 : version 2.2.1 CHECK message added to macros
+009 : version 2.2.2 gRcVoidPointer added

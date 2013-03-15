@@ -82,24 +82,25 @@
 // ---------------------------------------------------------
 // function returns pointer
 // ---------------------------------------------------------
-#define doPointTest( description,         \
-                     operator   ,         \
-                     function   , ...  )  \
-{                                                   \
-  char _gTestDescription_[64] ;                     \
-                                                    \
-  strcpy(      _gTestDescription_, description ) ;  \
-  textMessage( TEST_START_TXT    , function    ) ;  \
-  sysRc = NO_ERROR ;                                \
-                                                    \
-  void * _rc = (void*) function ( __VA_ARGS__  ) ;  \
-  if( ((void*) _rc) operator ((void*) NULL) )       \
-  {                                                 \
-    textMessage( TEST_ERR_TXT, function ) ;         \
-    sysRc = TEST_ERROR ;                            \
-    goto _door ;                                    \
-  }                                                 \
-  textMessage( TEST_OK_TXT, function ) ;            \
+#define doPointTest( description,                         \
+                     operator   ,                         \
+                     function   , ...  )                  \
+{                                                         \
+  char _gTestDescription_[64] ;                           \
+  gRcVoidPointer = NULL ;                                 \
+                                                          \
+  strcpy(      _gTestDescription_, description ) ;        \
+  textMessage( TEST_START_TXT    , function    ) ;        \
+  sysRc = NO_ERROR ;                                      \
+                                                          \
+  gRcVoidPointer = (void*) function ( __VA_ARGS__   ) ;   \
+  if( ((void*) gRcVoidPointer operator ((void*) NULL) )   \
+  {                                                       \
+    textMessage( TEST_ERR_TXT, function ) ;               \
+    sysRc = TEST_ERROR ;                                  \
+    goto _door ;                                          \
+  }                                                       \
+  textMessage( TEST_OK_TXT, function ) ;                  \
 }
 
 // -----------------------------------------------------------------------------
@@ -135,8 +136,9 @@ struct sTstCfg
 } ;
 
 /******************************************************************************/
-/*   G L O B A L S                   */
+/*   G L O B A L S                                     */
 /******************************************************************************/
+void *gRcVoidPointer ;  // used in doPointTest
 
 /******************************************************************************/
 /*   P R O T O T Y P E S                                                      */
