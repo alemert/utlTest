@@ -1,4 +1,9 @@
 /******************************************************************************/
+/*   G L O B A L S                                                            */
+/******************************************************************************/
+void *gRcVoidPointer ;  // used in doPointTest
+
+/******************************************************************************/
 /*   I N C L U D E S                                                          */
 /******************************************************************************/
 #include <unistd.h>
@@ -94,7 +99,7 @@
   sysRc = NO_ERROR ;                                      \
                                                           \
   gRcVoidPointer = (void*) function ( __VA_ARGS__   ) ;   \
-  if( ((void*) gRcVoidPointer operator ((void*) NULL) )   \
+  if( ((void*) gRcVoidPointer) operator ((void*) NULL) )  \
   {                                                       \
     textMessage( TEST_ERR_TXT, function ) ;               \
     sysRc = TEST_ERROR ;                                  \
@@ -135,10 +140,6 @@ struct sTstCfg
   char cmpFile[FILENAME_MAX] ; // compaire file for stdout of the tested prg
 } ;
 
-/******************************************************************************/
-/*   G L O B A L S                                     */
-/******************************************************************************/
-void *gRcVoidPointer ;  // used in doPointTest
 
 /******************************************************************************/
 /*   P R O T O T Y P E S                                                      */
