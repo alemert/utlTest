@@ -9,3 +9,4 @@
 008 : version 2.2.1 CHECK message added to macros
 009 : version 2.2.2 gRcVoidPointer added
 010 : version 2.2.3 gRcVoidPointer added (if statemant)
+011 : version 2.2.5 DUMP_CMT added in libGen ver 0.0.8
