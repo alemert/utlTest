@@ -175,15 +175,15 @@ int main(int argc, const char* argv[] )
   sysRc = diffLog( stdOutFile, cmpOutFile ) ;
   if( sysRc != NO_ERROR ) 
   {
-    fprintf( stderr, "diff failed: %s, %s\n",cmpOutFile, stdOutFile ) ;
+    fprintf( stderr, "diff failed: %s\t%s\n", stdOutFile, cmpOutFile ) ;
     goto _door ;
   //mAbbort( stdOutFile ) ;
   }
 
-  sysRc = diff( cmpErrFile, stdErrFile ) ;
+  sysRc = diffLog( cmpErrFile, stdErrFile ) ;
   if( sysRc != NO_ERROR ) 
   {
-    fprintf( stderr, "diff failed: %s, %s\n",cmpErrFile, stdErrFile ) ;
+    fprintf( stderr, "diff failed: %s\t%s\n", stdErrFile, cmpErrFile) ;
     goto _door ;
   //mAbbort( stdErrFile ) ;
   }
@@ -191,7 +191,7 @@ int main(int argc, const char* argv[] )
   sysRc = diffLog( cmpLogFile, logFile ) ;
   if( sysRc != NO_ERROR ) 
   {
-    fprintf( stderr, "diff failed: %s, %s\n",cmpLogFile, logFile ) ;
+    fprintf( stderr, "diff failed: %s, %s\n",logFile, cmpLogFile ) ;
     goto _door ;
   //mAbbort( stdErrFile ) ;
   }
